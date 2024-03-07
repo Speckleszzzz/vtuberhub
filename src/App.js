@@ -4,6 +4,7 @@ import React from 'react';
 import Welcome from './Components/Welcome';
 import TrendingCreators from './Components/TrendingCreators';
 import Genre from './Components/Genre';
+import Footer from './Components/Footer'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Welcome></Welcome>
       <TrendingCreators></TrendingCreators>
       <Genre></Genre>
+      <Footer></Footer>
     </div>
   );
 }
