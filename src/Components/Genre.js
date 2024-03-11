@@ -24,7 +24,7 @@ const Genre = () => {
     <div>
 
       <div className='flex justify-center'>
-        <p className=' p-4 font-bold text-xl'>Genre</p>
+        <p className=' p-4 font-bold text-xl text-zinc-50'>Genre</p>
       </div>
 
       <div className='flex justify-center space-x-2'>

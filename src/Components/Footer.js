@@ -15,11 +15,11 @@ const Footer = () => {
                 <SocialIcon network="twitter" url="https://github.com/Speckleszzzz" />
                 <SocialIcon url="https://www.example.com" label="Our portfolio" />
             </div>
-            <div className='space-x-4 flex justify-center '>
+            <div className='space-x-4 flex justify-center text-zinc-50'>
                 <p onClick={handleHomeClick}>Home</p>
                 <p>Contact</p>
             </div>
-            <div className='flex justify-center p-1 space-x-2'>
+            <div className='flex justify-center p-1 space-x-2 text-zinc-50'>
                 <p className='font-bold'>Copyright@2024:</p>
                 <p>Designed by</p>
                 <p className=' font-bold'>Speckles</p>
