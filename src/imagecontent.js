@@ -5,7 +5,7 @@ var data = [];
 
 const nameList = ["Ranjani", "Sara", "Shivani", "Sherwin","Jobi", "jawan", "shrii", "carzzz", "archana","RajuBai"];
 const genreList = ["Anime","Anime","Anime","Anime","Fantasy","Fantasy","Fantasy","Cartoon","Realistic","3D"]
-const Category = ["Female","Female","Female","Male","Kids","Kids","Female","Others","Female","Male"]
+const categoryList = ["Female","Female","Female","Male","Kids","Kids","Female","Others","Female","Male"]
 
 imageList.map((currImg, key) => {
     data.push({
@@ -13,8 +13,9 @@ imageList.map((currImg, key) => {
         img: currImg,
         name: nameList[key], 
         genre : genreList[key],
-        Category : Category[key]
-    })
-})
+        category : categoryList[key]
+    });
+    return null; // Add this line to explicitly return null from map function
+});
 
 export default data;
