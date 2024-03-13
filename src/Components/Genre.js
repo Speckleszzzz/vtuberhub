@@ -44,23 +44,20 @@ const Genre = () => {
       <div className='relative flex items-center py-8 mx-32 flex-wrap'>
       {filteredData.map((items, index) => (
         <div key={index} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 mb-8 p-2">
-          <div className='bg-yellow-50 p-2'>
-            <div className='cursor-pointer hover:scale-105 ease-in-out duration-300'>
-              <div className=''> 
-                <img className=' w-[500px] h-[200px] object-contain inline-block p-1' src={items.img} alt='/' />
+          <div className= 'bg-black border-slate-300 border-4 p-1'>
+            <div>
+              <div className='flex items-center'> 
+                <img className='inline-block cursor-pointer hover:scale-105 ease-in-out duration-300 px-2 py-4' src={items.img} alt='/' />
               </div>
-              <div className='bg-opacity-50 mx-5 p-3'>
-                <p>By : {items.name}</p>  
+              <div className='bg-opacity-50 mx-5 p-3 text-white'>
+                <p>By : {items.name}</p>
               </div>
             </div>
           </div>
         </div> 
         ))} 
       </div>
-    </div>
-      
-
-   
+    </div>   
   );
 }
 
