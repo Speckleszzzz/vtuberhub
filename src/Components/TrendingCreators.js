@@ -4,12 +4,12 @@ import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
 const SlideLeft = () => {
   var slider = document.getElementById('slider');
-  slider.scrollLeft = slider.scrollLeft - 800;
+  slider.scrollLeft = slider.scrollLeft - 1300;
 };
 
 const SlideRight = () => {
   var slider = document.getElementById('slider');
-  slider.scrollLeft = slider.scrollLeft + 800;
+  slider.scrollLeft = slider.scrollLeft + 1300;
 };
 
 const TrendingCreators = () => {
@@ -22,15 +22,15 @@ const TrendingCreators = () => {
 
       <div className='relative flex items-center py-8'>
         <MdChevronLeft className='opacity-50 cursor-pointer hover:opacity-100 fill-white' size={50} onClick={SlideLeft} />
-        <div id="slider" className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth space-x-4 scrollbar-hide overflow-clip'>
+        <div id="slider" className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth space-x-5 scrollbar-hide overflow-clip'>
           {data.map((items, index) => (
-            <div key={index} className="inline-block relative ">
-              <div className='bg-yellow-50'>
-                <div className='cursor-pointer hover:scale-105 ease-in-out duration-300'>
+            <div key={index} className="inline-block relative w-[250px] h-[550px] ">
+              <div className= ' bg-black border-slate-300 border-4 p-1'>
+                <div>
                   <div > 
-                    <img className='w-[500px] h-[400px] object-contain inline-block p-2' src={items.img} alt='/' />
+                    <img className='object-contain inline-block cursor-pointer hover:scale-105 ease-in-out duration-300 px-2 py-3' src={items.img} alt='/' />
                   </div>
-                  <div className='bg-opacity-50 mx-5 p-3'>
+                  <div className='bg-opacity-50 mx-5 p-3 text-white'>
                     <p>By : {items.name}</p>
                   </div>
                 </div>

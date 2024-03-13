@@ -6,13 +6,14 @@ import welcomewallpaper from "../images/welcomewallpaper.jpg";
 const NavBar = () => {
   return (
     <div style={{ backgroundImage: `url(${welcomewallpaper})` }} className='bg-cover bg-center h-screen h-vh[80]'>
-        <div className='flex justify-between px-10 h-vh[10] items-center bg-slate-600'>
+        <div className='flex justify-between px-5 h-vh[10] items-center bg-black opacity-80'>
           <div>
-            <img src={logo} alt="Logo" width={100} height={100} /> 
+            <img src={logo} alt="Logo" width={90} height={90} /> 
           </div>
-          <div className='flex justify-between space-x-4 items-center text-xl font-medium'>
+          <div className='flex justify-between space-x-4 items-center text-xl font-medium text-white'>
             <p>Home</p>
-            <p>Profile</p>
+            <p>Trending</p>
+            <p>Genre</p>
             <p>About</p>
           </div>
         </div>
