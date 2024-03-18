@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import data from '../imagecontent'; // Importing image data from the provided file
+import data from '../imagecontent'; 
+import '../Styling/GenreSection.css';
+
 
 export default class GenreSection extends Component {
   constructor(props) {
@@ -7,6 +9,7 @@ export default class GenreSection extends Component {
     this.state = {
       dropdownVisible: false,
       selectedGenre: null,
+      hoverIndex: null
     };
     this.dropdownRef = React.createRef();
   }
@@ -24,11 +27,19 @@ export default class GenreSection extends Component {
     });
   };
 
+  handleMouseEnter = (index) => {
+    this.setState({ hoverIndex: index });
+  };
+
+  handleMouseLeave = () => {
+    this.setState({ hoverIndex: null });
+  };
+
   render() {
-    const { dropdownVisible, selectedGenre } = this.state;
+    const { dropdownVisible, selectedGenre, hoverIndex } = this.state;
 
     return (
-      <div className='relative'>
+      <div className='relative h-fit'>
         <div className='mx-40 flex justify-between items-center'>
           <div className='font-bold mx-12 text-zinc-50'>
             <p className='text-5xl'>More Features</p>
@@ -47,38 +58,57 @@ export default class GenreSection extends Component {
                 <li onClick={() => this.handleGenreSelect('Anime')}>
                   <div className="flex items-center">
                     <input id="checkbox-item-1" type="checkbox" value="" className="w-4 h-4 text-gray-600 bg-gray-400 border-gray-400 rounded focus:ring-gray-500 dark:focus:ring-gray-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
-                    <label htmlFor="checkbox-item-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Anime</label>
+                    <label htmlFor="checkbox-item-1" className="ms-2 text-sm font-medium text-white dark:text-gray-300">Anime</label>
                   </div>
                 </li>
                 <li onClick={() => this.handleGenreSelect('Fantasy')}>
                   <div className="flex items-center">
                     <input id="checkbox-item-2" type="checkbox" value="" className="w-4 h-4 text-gray-600 bg-gray-400 border-gray-300 rounded focus:ring-gray-500 dark:focus:ring-gray-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
-                    <label htmlFor="checkbox-item-2" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Fantasy</label>
+                    <label htmlFor="checkbox-item-2" className="ms-2 text-sm font-medium text-white dark:text-gray-300">Fantasy</label>
                   </div>
                 </li>
                 <li onClick={() => this.handleGenreSelect('Cartoon')}>
                   <div className="flex items-center">
                     <input id="checkbox-item-3" type="checkbox" value="" className="w-4 h-4 text-gray-600 bg-gray-100 border-gray-300 rounded focus:ring-gray-500 dark:focus:ring-gray-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
-                    <label htmlFor="checkbox-item-3" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Cartoon</label>
+                    <label htmlFor="checkbox-item-3" className="ms-2 text-sm font-medium text-white dark:text-gray-300">Cartoon</label>
                   </div>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        {selectedGenre && (
-          <div className="grid grid-cols-4 gap-4 mx-44 my-8">
-            {data
-              .filter(item => item.genre === selectedGenre)
-              .map(item => (
-                <div key={item.id} className="flex flex-col items-center">
-                  <img src={item.img} alt={item.name} className="w-full h-auto" />
-                  <p className="mt-2">{item.name}</p>
+        <div className="grid grid-cols-4 gap-4 mx-44 my-8 h-[100%]">
+        {data
+          .filter(item => item.genre === selectedGenre)
+          .map((item, index) => (
+            <div 
+              key={item.id} 
+              className="flex flex-col items-center relative"
+              onMouseEnter={() => this.handleMouseEnter(index)}
+              onMouseLeave={this.handleMouseLeave}
+            >
+              <div 
+                className="relative w-full h-fit cursor-pointer"
+                style={{ transition: 'transform 0.5s' }}
+              >
+                <div className={`flipper ${hoverIndex === index ? 'flipped' : ''}`}>
+                  <div className="front">
+                    <img src={item.img} alt={item.name} className="w-full h-fit" />
+                  </div>
+                  <div className="back absolute top-0">
+                    <div className="w-full h-full p-4 text-white bg-gray-800 bg-opacity-80 text-center flex justify-center">
+                      <p className="font-semibold">{item.name}</p>
+                      <p className="text-sm">{item.description}</p>
+                    </div>
+                  </div>
                 </div>
-              ))}
-          </div>
-        )}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
 }
+
+
