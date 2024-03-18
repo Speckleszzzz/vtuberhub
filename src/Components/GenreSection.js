@@ -53,7 +53,7 @@ export default class GenreSection extends Component {
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
               </svg>
             </button>
-            <div ref={this.dropdownRef} id="dropdownDefaultCheckbox" className={`absolute top-full z-10 ${dropdownVisible ? '' : 'hidden'} w-48 bg-gray-700 divide-y divide-gray-400 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 dark:divide-gray-600`}>
+            <div ref={this.dropdownRef} id="dropdownDefaultCheckbox" className={`absolute top-full z-10 ${dropdownVisible ? '' : 'hidden'} w-48 bg-gray-700 divide-y divide-gray-400 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600`}>
               <ul className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownCheckboxButton">
                 <li onClick={() => this.handleGenreSelect('Anime')}>
                   <div className="flex items-center">
