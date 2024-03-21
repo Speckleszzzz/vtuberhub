@@ -1,6 +1,7 @@
 var express = require("express");
 var MongoClient = require("mongodb").MongoClient;
 var cors = require("cors");
+const multer = require("multer");
 
 var app = express();
 app.use(cors());
@@ -9,10 +10,6 @@ var CONNECTION_STRING = "mongodb+srv://akashcharles:englandss2406@cluster0.lxuq4
 var DATABASE_NAME = "PostItems";
 
 var database;
-
-app.get("/", (req, res) => {
-    res.send("Hello, world!"); 
-});
 
 app.listen(8080, () => {
     MongoClient.connect(CONNECTION_STRING, (error, client) => {
@@ -24,3 +21,19 @@ app.listen(8080, () => {
         }
     });
 });
+
+app.get("/api/vtuber/getpost", (req, res) => {
+    database.collection("postitemscollections").find({}).toArray((error,result) => {
+        res.send(result);
+    })
+});
+
+app.post("/api/vtuber/addpost",multer().none(),(req,res) => {
+    database.collection("postitemscollections").count({},function(error,numOfDocs){
+        database.collection("postitemscollections").insertOne({
+            id:(numOfDocs+1).toString(),
+            description:express.request.body.newNotes
+        });
+        response.json("Added Successfully");
+    })
+})
