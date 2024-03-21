@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
     res.send("Hello, world!"); 
 });
 
-app.listen(5038, () => {
+app.listen(8080, () => {
     MongoClient.connect(CONNECTION_STRING, (error, client) => {
         if (error) {
             console.error("Error connecting to MongoDB:", error);

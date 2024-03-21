@@ -25,7 +25,7 @@ const TrendingCreators = () => {
         <div id="slider" className='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth space-x-5 scrollbar-hide overflow-clip'>
           {data.map((items, index) => (
             <div key={index} className="inline-block relative w-[250px] h-[550px] ">
-              <div className= ' bg-black border-slate-300 border-4 p-1'>
+              <div className= ' bg-black border-slate-300 border-2 p-1'>
                 <div>
                   <div > 
                     <img className='object-contain inline-block cursor-pointer hover:scale-105 ease-in-out duration-300 px-2 py-3' src={items.img} alt='/' />
