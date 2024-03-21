@@ -1,39 +1,40 @@
-var express = require("express");
-var MongoClient = require("mongodb").MongoClient;
-var cors = require("cors");
-const multer = require("multer");
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
 
-var app = express();
+const app = express();
+
 app.use(cors());
+app.use(express.json());
 
-var CONNECTION_STRING = "mongodb+srv://akashcharles:englandss2406@cluster0.lxuq4oq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-var DATABASE_NAME = "PostItems";
+const CONNECTION_STRING = 'mongodb+srv://akashcharles:englandss2406@cluster0.lxuq4oq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+mongoose.connect(CONNECTION_STRING, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => console.log('Connected to MongoDB'));
 
-var database;
-
-app.listen(8080, () => {
-    MongoClient.connect(CONNECTION_STRING, (error, client) => {
-        if (error) {
-            console.error("Error connecting to MongoDB:", error);
-        } else {
-            database = client.db(DATABASE_NAME);
-            console.log("Mongo DB Connection Successful");
-        }
-    });
+const uploadSchema = new mongoose.Schema({
+    name: String,
+    description: String,
+    imageUrl: String
 });
 
-app.get("/api/vtuber/getpost", (req, res) => {
-    database.collection("postitemscollections").find({}).toArray((error,result) => {
-        res.send(result);
-    })
+const Upload = mongoose.model('Upload', uploadSchema);
+
+app.post('/api/upload', async (req, res) => {
+    try {
+        const { name, description, imageUrl } = req.body;
+        const upload = new Upload({ name, description, imageUrl });
+        await upload.save();
+        res.status(201).json({ message: 'Upload successful' });
+    } catch (error) {
+        console.error('Error uploading:', error);
+        res.status(500).json({ error: 'Failed to upload' });
+    }
 });
 
-app.post("/api/vtuber/addpost",multer().none(),(req,res) => {
-    database.collection("postitemscollections").count({},function(error,numOfDocs){
-        database.collection("postitemscollections").insertOne({
-            id:(numOfDocs+1).toString(),
-            description:express.request.body.newNotes
-        });
-        response.json("Added Successfully");
-    })
-})
+const PORT = 8080;
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
