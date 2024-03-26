@@ -47,7 +47,7 @@ export default class GenreSection extends Component {
             {!selectedGenre && <p>Choose your genre to search for the perfect match</p>}
           </div>
           <div className="relative">
-            <button onClick={this.handleClick} id="dropdownCheckboxButton" className="w-48 text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800" type="button">
+            <button onClick={this.handleClick} id="dropdownCheckboxButton" className=" w-48 text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800" type="button">
               Filter options
               <svg className={`w-2.5 h-2.5 ms-3 ${dropdownVisible ? 'transform rotate-180' : ''}`} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6" style={{position: 'relative', right: '5px'}}>
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>

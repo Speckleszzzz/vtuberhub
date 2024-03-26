@@ -1,12 +1,14 @@
 import React from 'react';
 import logo from "../images/vtubermainlogo.png"
 import welcomewallpaper from "../images/welcomewallpaper.jpg";
+import '../Styling/NavBar.css'
 
 
 const NavBar = () => {
   return (
     <div style={{ backgroundImage: `url(${welcomewallpaper})` }} className='bg-cover bg-center h-screen h-vh[80]'>
-        <div className='flex justify-between px-5 h-vh[10] items-center bg-black opacity-80'>
+      <div className='py-3 sticky-header'>
+        <div className='flex justify-between px-5 h-vh[10] items-center bg-black opacity-80 mx-20 rounded-full'>
           <div>
             <img src={logo} alt="Logo" width={90} height={90} /> 
           </div>
@@ -17,6 +19,7 @@ const NavBar = () => {
             <p>About</p>
           </div>
         </div>
+      </div>
         <div>
           <div className='text-center text-white absolute left-36 py-80'>
               <p className='text-3xl'>Welcome to</p>
