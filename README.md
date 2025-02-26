@@ -16,15 +16,15 @@ This project aims to simplify the process of finding and commissioning the right
  React-Based – Built with React.js for fast and dynamic interactions.
 
 
-🛠️ Tech Stack
+### 🛠️ Tech Stack
 React.js (Frontend framework)
 Tailwind CSS (Styling)
 Axios (API handling)
 React Router (Navigation)
 
-🏗️ How It Works
+### 🏗️ How It Works
 Artists create a profile and upload their work.
 VTubers browse portfolios and contact artists.
 
-📌 Planned Updates 
+### 📌 Planned Updates 
 Connecting with BlockChain
